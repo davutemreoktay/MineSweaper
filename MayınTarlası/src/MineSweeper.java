@@ -11,6 +11,7 @@ public class MineSweeper {
     Scanner scan = new Scanner(System.in);
 
     MineSweeper(int rows, int cols) {
+        // Oyun alanının satır ve sütun sayılarını alarak başlatılır.
         this.rows = rows;
         this.cols = cols;
         this.map = new int[rows][cols];
@@ -19,6 +20,7 @@ public class MineSweeper {
     }
 
     public void run() {
+        // Mayınları rastgele yerleştirir ve çevresinde kaç mayın olduğunu hesaplar.
         int row, col, victory = 0;
         prepareGame();
         System.out.println("Oyun Başladı");
@@ -89,8 +91,9 @@ public class MineSweeper {
     private boolean isValid(int row, int col) {
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
-
+    // Belirtilen hücrenin oyun alanı içinde olup olmadığını kontrol eder.
     private void check(int row, int col) {
+        // Seçilen hücrede mayın veya işaret varsa işlem yapar.
         if (board[row][col] != 0) {
             return;
         }
@@ -110,8 +113,8 @@ public class MineSweeper {
             }
         }
     }
-
     private void print(int[][] grid) {
+        // Oyun alanını ekrana basar.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == -1) {
