@@ -12,3 +12,5 @@ Oyunun temel kuralları şunlardır:
 * Eğer seçilen hücrede mayın yoksa, oyun devam eder ve seçilen hücrenin etrafındaki hücrelerin kaç tane mayın içerdiği gösterilir.
 * Oyuncu tüm mayınları işaretlemeyi başarırsa, oyun kazanılır.
 
+11 VE 14. SORULARIN REVİZESİ YAPILMIŞTIR FAKAT BÜTÜN UĞRAŞLARIMA RAĞMEN ETRAFI BOŞ OLAN KUTUYA 0'I BASTIRAMADIM.
+

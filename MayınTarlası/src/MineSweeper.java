@@ -33,7 +33,6 @@ public class MineSweeper {
             System.out.print("Sütun: ");
             col = scan.nextInt();
 
-
             if (row < 0 || row >= rows || col < 0 || col >= cols) {
                 System.out.println("Geçersiz Giriş");
                 continue;
@@ -44,19 +43,23 @@ public class MineSweeper {
                 victory++;
                 if (victory == (size - (size / 4))) {
                     System.out.println("Kazandınız.");
-                    break;
+                    if (map[row][col]!=-1){
+                        check(row,col);
+                    }else {
+                        game = false;
+                        System.out.println("Mayına Bastınız.");
+                        break;
+                    }
+
                 }
-            } else {
-                game = false;
-                System.out.println("Mayına Bastınız. Oyun Bitti!");
+
+
+
             }
-
         }
-
     }
 
     private void prepareGame() {
-
         int totalMines = size / 4;
         for (int i = 0; i < totalMines; i++) {
             int randRow, randCol;
@@ -66,52 +69,31 @@ public class MineSweeper {
             } while (map[randRow][randCol] == -1);
             map[randRow][randCol] = -1;
         }
-
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (map[i][j] == -1) {
-                    continue;
-                }
-                int count = 0;
-                for (int r = -1; r <= 1; r++) {
-                    for (int c = -1; c <= 1; c++) {
-                        int newRow = i + r;
-                        int newCol = j + c;
-                        if (isValid(newRow, newCol) && map[newRow][newCol] == -1) {
-                            count++;
-                        }
-                    }
-                }
-                map[i][j] = count;
-            }
-        }
     }
 
     private boolean isValid(int row, int col) {
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
-    // Belirtilen hücrenin oyun alanı içinde olup olmadığını kontrol eder.
+
     private void check(int row, int col) {
-        // Seçilen hücrede mayın veya işaret varsa işlem yapar.
         if (board[row][col] != 0) {
             return;
         }
 
-        board[row][col] = map[row][col];
-
-        if (map[row][col] == 0) {
-
-            for (int r = -1; r <= 1; r++) {
-                for (int c = -1; c <= 1; c++) {
-                    int newRow = row + r;
-                    int newCol = col + c;
-                    if (isValid(newRow, newCol)) {
-                        check(newRow, newCol);
-                    }
+        int count = 0;
+        for (int r = -1; r <= 1; r++) {
+            for (int c = -1; c <= 1; c++) {
+                int newRow = row + r;
+                int newCol = col + c;
+                if (isValid(newRow, newCol) && map[newRow][newCol] == -1) {
+                    count++;
+                }
+                if (board[row][col]==0){
+                    board[row][col]=-2;
                 }
             }
         }
+        board[row][col] = count;
     }
     private void print(int[][] grid) {
         // Oyun alanını ekrana basar.
