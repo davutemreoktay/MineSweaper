@@ -13,4 +13,5 @@ Oyunun temel kuralları şunlardır:
 * Oyuncu tüm mayınları işaretlemeyi başarırsa, oyun kazanılır.
 
 11 VE 14. SORULARIN REVİZESİ YAPILMIŞTIR FAKAT BÜTÜN UĞRAŞLARIMA RAĞMEN ETRAFI BOŞ OLAN KUTUYA 0'I BASTIRAMADIM.
+Dün 23.50 civarlarında eksik olarak pushlayabildiğim ödevi bugün tekrar baktığımda çözdüm artık 0'da bastırabiliyor ve kusursuz çalışıyor.
 

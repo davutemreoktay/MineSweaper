@@ -42,19 +42,15 @@ public class MineSweeper {
                 check(row, col);
                 victory++;
                 if (victory == (size - (size / 4))) {
-                    System.out.println("Kazandınız.");
-                    if (map[row][col]!=-1){
-                        check(row,col);
-                    }else {
+                    if (map[row][col] != -1) {
+                        check(row, col);
+                        System.out.println("Kazandınız.");
+                    } else {
                         game = false;
                         System.out.println("Mayına Bastınız.");
                         break;
                     }
-
                 }
-
-
-
             }
         }
     }
@@ -79,7 +75,6 @@ public class MineSweeper {
         if (board[row][col] != 0) {
             return;
         }
-
         int count = 0;
         for (int r = -1; r <= 1; r++) {
             for (int c = -1; c <= 1; c++) {
@@ -88,19 +83,24 @@ public class MineSweeper {
                 if (isValid(newRow, newCol) && map[newRow][newCol] == -1) {
                     count++;
                 }
-                if (board[row][col]==0){
-                    board[row][col]=-2;
-                }
             }
         }
-        board[row][col] = count;
+        if (count == 0) {
+            board[row][col] = -2; // Etrafında mayın yoksa -2 olarak işaretlenir.
+        } else {
+            board[row][col] = count;
+        }
+
     }
+
     private void print(int[][] grid) {
         // Oyun alanını ekrana basar.
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == -1) {
                     System.out.print("* ");
+                } else if (grid[i][j] == -2) {
+                    System.out.print("0 ");
                 } else if (grid[i][j] == 0) {
                     System.out.print(". ");
                 } else {
